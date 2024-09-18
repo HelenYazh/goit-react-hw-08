@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { selectUser } from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/auth/operations";
+import css from "./UserMenu.module.css";
 
 const UserMenu = () => {
   const user = useSelector(selectUser);
@@ -10,10 +11,10 @@ const UserMenu = () => {
     dispatch(logout());
   };
   return (
-    <div>
+    <div className={css.wrapper}>
       <NavLink to="/contacts" />
       <p>Hello, {user.name}</p>
-      <button type="button" onClick={onLogout}>
+      <button className={css.btn} type="button" onClick={onLogout}>
         Logout
       </button>
     </div>

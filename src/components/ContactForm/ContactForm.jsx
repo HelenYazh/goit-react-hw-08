@@ -1,9 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
-import css from "./ContactForm.module.css";
+import css from "../LoginForm/LoginForm.module.css";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
+import toast from "react-hot-toast";
 
 const initialValues = {
   name: "",
@@ -31,7 +32,11 @@ const ContactForm = () => {
       number: values.number,
     };
 
-    dispatch(addContact(contactObject));
+    dispatch(addContact(contactObject))
+      .unwrap()
+      .then(() => {
+        toast.success("Contact added successfully🎉");
+      });
 
     actions.resetForm();
   };
@@ -42,30 +47,28 @@ const ContactForm = () => {
         onSubmit={handleSubmit}
         validationSchema={formValidationSchema}
       >
-        <Form className={css.form}>
-          <label className={css.label}>
+        <Form className={css.wrapper}>
+          <label>
             <span>Name</span>
-            <Field name="name" />
+            <Field type="text" name="name" placeholder="Olena" />
             <ErrorMessage
-              className={css.errorMsg}
+              className={css.errorText}
               name="name"
               component="span"
             />
           </label>
 
-          <label className={css.label}>
+          <label>
             <span>Number</span>
-            <Field type="tel" name="number" />
+            <Field type="tel" name="number" placeholder="xxx-xxx-xxxx" />
             <ErrorMessage
-              className={css.errorMsg}
+              className={css.errorText}
               name="number"
               component="span"
             />
           </label>
 
-          <button className={css.btn} type="submit">
-            Add contact
-          </button>
+          <button type="submit">Add contact</button>
         </Form>
       </Formik>
     </>

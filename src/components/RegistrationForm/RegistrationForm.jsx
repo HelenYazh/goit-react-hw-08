@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import css from "../ContactForm/ContactForm.module.css";
+import css from "../LoginForm/LoginForm.module.css";
 import { register } from "../../redux/auth/operations";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
@@ -40,8 +40,8 @@ const RegistrationForm = () => {
       validationSchema={RegisterValidationSchema}
     >
       {({ errors }) => (
-        <Form className={css.form}>
-          <label className={css.label}>
+        <Form className={css.wrapper}>
+          <label>
             <span>Username:</span>
             <Field type="text" name="name" placeholder="Olena" />
             <ErrorMessage
@@ -50,7 +50,7 @@ const RegistrationForm = () => {
               component="span"
             />
           </label>
-          <label className={css.label}>
+          <label>
             <span>Email:</span>
             <Field type="text" name="email" placeholder="example@gmail.com" />
             <ErrorMessage
@@ -60,7 +60,7 @@ const RegistrationForm = () => {
             />
           </label>
 
-          <label className={css.label}>
+          <label>
             <span>Password:</span>
             <Field
               type="password"
@@ -74,13 +74,10 @@ const RegistrationForm = () => {
             />
           </label>
 
-          <button
-            disabled={Object.keys(errors).length > 0}
-            className={css.submitBtn}
-            type="submit"
-          >
+          <button disabled={Object.keys(errors).length > 0} type="submit">
             Sign up
           </button>
+          <a href="/login">Already have an account? Login</a>
           {error && (
             <p className={css.errorText}>Oops, some error occured... {error}</p>
           )}

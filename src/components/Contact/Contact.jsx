@@ -3,17 +3,18 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import css from "./Contact.module.css";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contacts/operations";
+import toast from "react-hot-toast";
 
 const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className={css.contact}>
+    <>
       <div>
         <p className={css.info}>
           <FaUser />
           &nbsp;
-          {name}
+          <b>{name}</b>
         </p>
         <p className={css.info}>
           <BsFillTelephoneFill />
@@ -21,10 +22,19 @@ const Contact = ({ id, name, number }) => {
           {number}
         </p>
       </div>
-      <button onClick={() => dispatch(deleteContact(id))} type="button">
+      <button
+        onClick={() =>
+          dispatch(deleteContact(id))
+            .unwrap()
+            .then(() => {
+              toast.success("Contact deleted successfully🎉");
+            })
+        }
+        type="button"
+      >
         Delete
       </button>
-    </div>
+    </>
   );
 };
 

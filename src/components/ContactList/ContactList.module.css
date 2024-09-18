@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  width: 280px;
+  background-color: white;
+  border: 2px solid #ff4500;
+  border-radius: 5px;
+  padding: 0 8px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}

@@ -1,0 +1,22 @@
+.icon {
+  height: 100px;
+  width: 100px;
+}
+
+.homepage {
+  color: #333;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.homepage h1 {
+  font-size: 36px;
+  color: #ff4500;
+  margin-bottom: 20px;
+}
+
+.homepage p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #555;
+}

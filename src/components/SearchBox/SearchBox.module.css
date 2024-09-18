@@ -1,13 +1,36 @@
+.wrapper {
+  background-color: #fff8f0;
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 25px auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .searchBox {
   display: flex;
   flex-direction: column;
-  margin: 5px;
-  margin-left: 15px;
-  margin-bottom: 25px;
   justify-content: center;
-  align-items: start;
+  align-items: center;
 }
 
 .searchLine {
-  width: 280px;
+  padding: 10px;
+  border: 2px solid #9d2800;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 400px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.searchLine:focus {
+  border: 2px solid #ff4500;
+}
+
+.searchBox label {
+  font-size: 18px;
+  color: #471200;
+  margin-bottom: 5px;
 }
