@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { register, login, refreshUser } from "./operations"
+import { register, login, refreshUser, logout } from "./operations"
 
 const INIT_STATE = {
     user: {
@@ -52,6 +52,15 @@ const authSlice = createSlice({
         .addCase(refreshUser.rejected, (state, action) => {
             state.error = action.payload;
             state.isRefreshing = false;
+        })
+        .addCase(logout.pending, (state) => {
+            state.error = null;
+        })
+        .addCase(logout.fulfilled, () => {
+            return INIT_STATE;
+        })
+        .addCase(logout.rejected, (state, action) => {
+            state.error = action.payload;
         })
 })
 

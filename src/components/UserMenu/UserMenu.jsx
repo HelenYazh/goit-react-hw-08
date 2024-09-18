@@ -1,13 +1,21 @@
 import { NavLink } from "react-router-dom";
 import { selectUser } from "../../redux/auth/selectors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/auth/operations";
 
 const UserMenu = () => {
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const onLogout = () => {
+    dispatch(logout());
+  };
   return (
     <div>
       <NavLink to="/contacts" />
       <p>Hello, {user.name}</p>
+      <button type="button" onClick={onLogout}>
+        Logout
+      </button>
     </div>
   );
 };
