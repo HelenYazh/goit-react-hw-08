@@ -43,7 +43,7 @@ const RegistrationForm = () => {
         <Form className={css.wrapper}>
           <label>
             <span>Username:</span>
-            <Field type="text" name="name" placeholder="Olena" />
+            <Field type="text" name="name" placeholder="Enter username" />
             <ErrorMessage
               className={css.errorText}
               name="name"
