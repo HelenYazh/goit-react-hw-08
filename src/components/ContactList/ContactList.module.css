@@ -20,3 +20,8 @@
   align-items: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.text {
+  display: flex;
+  justify-content: center;
+}

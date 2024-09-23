@@ -23,27 +23,30 @@ const ContactList = () => {
 
   return (
     <>
-      {contacts?.length === 0 && <h3>Contacts list is empty</h3>}
-      <ul className={css.list}>
-        {filteredContacts.length > 0 ? (
-          <>
-            {filteredContacts.map((contact) => {
-              return (
-                <li className={css.listItem} key={contact.id}>
-                  <Contact
-                    key={contact.id}
-                    id={contact.id}
-                    name={contact.name}
-                    number={contact.number}
-                  />
-                </li>
-              );
-            })}
-          </>
-        ) : (
-          <h3>No contacts were found for your request</h3>
-        )}
-      </ul>
+      {contacts?.length === 0 ? (
+        <h3 className={css.text}>Contacts list is empty</h3>
+      ) : (
+        <ul className={css.list}>
+          {filteredContacts.length > 0 ? (
+            <>
+              {filteredContacts.map((contact) => {
+                return (
+                  <li className={css.listItem} key={contact.id}>
+                    <Contact
+                      key={contact.id}
+                      id={contact.id}
+                      name={contact.name}
+                      number={contact.number}
+                    />
+                  </li>
+                );
+              })}
+            </>
+          ) : (
+            <h3>No contacts were found for your request</h3>
+          )}
+        </ul>
+      )}
     </>
   );
 };
