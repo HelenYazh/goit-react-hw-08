@@ -25,6 +25,9 @@ const Contact = ({ id, name, number }) => {
         </p>
       </div>
       <div className={css.wrapper}>
+        <button onClick={() => dispatch()} type="button">
+          <FaUserEdit className={css.icon} />
+        </button>
         <button
           onClick={() =>
             dispatch(deleteContact(id))
@@ -36,9 +39,6 @@ const Contact = ({ id, name, number }) => {
           type="button"
         >
           <MdDeleteForever className={css.icon} />
-        </button>
-        <button type="button">
-          <FaUserEdit className={css.icon} />
         </button>
       </div>
     </>
