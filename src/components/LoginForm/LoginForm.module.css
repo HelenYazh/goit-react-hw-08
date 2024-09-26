@@ -53,6 +53,13 @@
   transform: scale(0.98);
 }
 
+.editBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .wrapper a {
   color: #ff4500;
   text-align: center;

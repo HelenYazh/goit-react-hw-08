@@ -6,8 +6,9 @@ import css from "./Contact.module.css";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contacts/operations";
 import toast from "react-hot-toast";
+import { setCurrentContact } from "../../redux/contacts/slice";
 
-const Contact = ({ id, name, number }) => {
+const Contact = (contact) => {
   const dispatch = useDispatch();
 
   return (
@@ -16,21 +17,24 @@ const Contact = ({ id, name, number }) => {
         <p className={css.info}>
           <FaUser />
           &nbsp;
-          <b>{name}</b>
+          <b>{contact.name}</b>
         </p>
         <p className={css.info}>
           <BsFillTelephoneFill />
           &nbsp;
-          {number}
+          {contact.number}
         </p>
       </div>
       <div className={css.wrapper}>
-        <button onClick={() => dispatch()} type="button">
+        <button
+          onClick={() => dispatch(setCurrentContact(contact))}
+          type="button"
+        >
           <FaUserEdit className={css.icon} />
         </button>
         <button
           onClick={() =>
-            dispatch(deleteContact(id))
+            dispatch(deleteContact(contact.id))
               .unwrap()
               .then(() => {
                 toast.success("Contact deleted successfully🎉");
