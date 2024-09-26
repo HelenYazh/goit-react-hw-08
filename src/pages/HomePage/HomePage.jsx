@@ -23,11 +23,11 @@ const HomePage = () => {
       <FcContacts className={css.icon} />
       <p>Manage all your contacts in one place. Easy and secure.</p>
       <div className={css.features}>
-        <h2>Features</h2>
+        <h2>Features:</h2>
         <ul>
-          <li>Add, edit, and delete contacts.</li>
-          <li>Secure and fast storage.</li>
-          <li>Accessible from anywhere.</li>
+          <li>✔ Add, edit, and delete contacts.</li>
+          <li>✔ Secure and fast storage.</li>
+          <li>✔ Accessible from anywhere.</li>
         </ul>
       </div>
     </div>
