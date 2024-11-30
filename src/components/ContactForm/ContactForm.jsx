@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const initialValues = {
   name: "",
-  number: "",
+  phoneNumber: "",
 };
 
 const phoneRegExp = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
@@ -18,7 +18,7 @@ const formValidationSchema = Yup.object().shape({
     .min(3, "Too short!")
     .max(50, "Too long!")
     .required("Name is required!"),
-  number: Yup.string()
+  phoneNumber: Yup.string()
     .matches(phoneRegExp, "Must be 'xxx-xxx-xxxx' format")
     .required("A phone number is required!"),
 });
@@ -29,7 +29,7 @@ const ContactForm = () => {
   const handleSubmit = (values, actions) => {
     const contactObject = {
       name: values.name,
-      number: values.number,
+      phoneNumber: values.phoneNumber,
     };
 
     dispatch(addContact(contactObject))
@@ -60,10 +60,10 @@ const ContactForm = () => {
 
           <label>
             <span>Number</span>
-            <Field type="tel" name="number" placeholder="xxx-xxx-xxxx" />
+            <Field type="tel" name="phoneNumber" placeholder="xxx-xxx-xxxx" />
             <ErrorMessage
               className={css.errorText}
-              name="number"
+              name="phoneNumber"
               component="span"
             />
           </label>

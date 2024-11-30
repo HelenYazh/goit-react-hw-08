@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const instance = axios.create({
-    baseURL: "https://connections-api.goit.global/"
+    baseURL: "https://contacts-app-x4p7.onrender.com/"
 })
 
 const setAuthHeader = (token) => {
@@ -18,7 +18,7 @@ export const register = createAsyncThunk(
     "auth/register",
     async (formData, thunkAPI) => {
         try {
-            const { data } = await instance.post("users/signup", formData)
+            const { data } = await instance.post("auth/register", formData)
             setAuthHeader(data.token)
 
             return data;
@@ -33,8 +33,10 @@ export const login = createAsyncThunk(
     "auth/login",
     async (formData, thunkAPI) => {
         try {
-            const { data } = await instance.post("users/login", formData)
-            setAuthHeader(data.token)
+            const { data } = await instance.post("auth/login", formData)
+            setAuthHeader(data.accessToken)
+            console.log("opr", data);
+
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message)
@@ -47,7 +49,7 @@ export const logout = createAsyncThunk(
     "auth/logout",
     async (_, thunkAPI) => {
         try {
-            await instance.post("users/logout")
+            await instance.post("auth/logout")
             clearAuthHeader();
             return;
         } catch (error) {
@@ -70,7 +72,7 @@ export const refreshUser = createAsyncThunk(
 
         try {
             setAuthHeader(token);
-            const { data } = await instance.get("users/current")
+            const { data } = await instance.get("auth/refresh")
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message)

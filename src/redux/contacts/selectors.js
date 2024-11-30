@@ -12,12 +12,15 @@ export const selectContactError = (state) => state.contacts.error;
 export const selectFilteredContacts = createSelector(
     [selectContacts, selectFilterValue],
 
-    (contacts, filterValue) => {
-        const normalizedFilter = filterValue.toLowerCase();
+    (contacts, filter) => {
+        const normalizedFilter = filter.toLowerCase();
+        console.log(contacts);
 
         return contacts.filter((contact) => {
-            const matchesName = contact.name.toLowerCase().includes(normalizedFilter);
-            const matchesNumber = contact.number.includes(normalizedFilter);
+            console.log(contact);
+            if (!contact) return false;
+            const matchesName = contact.name?.toLowerCase().includes(normalizedFilter);
+            const matchesNumber = contact.number?.includes(normalizedFilter);
 
             return matchesName || matchesNumber;
         })
